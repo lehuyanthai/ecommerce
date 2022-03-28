@@ -1,0 +1,130 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  padding: 0 30px;
+  height: 60px;
+  &__link {
+    display: flex; 
+    padding-top: 20px;
+    .about{
+      &:hover{
+        width: 110%;
+        border-bottom: solid 2px black;
+      }
+    }
+    &--item {
+      a{
+        color: grey;
+        &:hover {
+          color: black;
+        }
+      }
+      font-size: 12px;
+      margin: 0 20px;
+    }
+  }
+
+  &__title{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+
+    &--item {
+      list-style-type: none;
+      font-size: 12px;
+      margin: 0 20px;
+      color: grey;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }   
+      a{
+        color: grey;
+        &:hover {
+          color: black;
+        }
+      }
+      .cart__btn {
+        border: solid 1px grey;
+        border-radius: 10px;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+.dropdown{
+  height: 100%;
+  transition: 0.3s;
+  &:hover{
+    border-bottom: solid 6px black;
+  }
+}
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+.dropdown-content {
+  border-top: solid 1px rgb(194, 192, 192,50%);
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  left: 0;
+  padding: 30px;
+  // box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top:20px
+}
+.column {
+  float: left;
+  width: 15%;
+  padding: 10px;
+  background-color: #fff;
+  // height: 250px;
+  margin-bottom: 20px;
+
+  img{
+    height: 180px;
+    object-fit: contain;
+  }
+}
+
+/* Style links inside the columns */
+.column a {
+  float: none;
+  color: black;
+  padding-top: 12px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 13px;
+}
+
+/* Add a background color on hover */
+.column a:hover {
+  text-decoration: underline;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h4{
+  font-weight: normal;
+  font-size: 13px;
+  color: grey;
+}

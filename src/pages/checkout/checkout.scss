@@ -1,0 +1,30 @@
+.checkout {
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .title {
+    font-size: 30px;
+    margin: 50px 0;
+  }
+  img {
+    width: 100px;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .group__button{
+      display: flex;
+      .button{
+          border-radius: 10px;
+          font-weight: bold;
+          padding: 10px;margin-right: 20px;
+          background-color: rgb(77, 190, 121);
+          text-transform: uppercase;
+        &:hover{
+            background-color: rgb(98, 248, 156);
+        }
+      }
+  }
+}

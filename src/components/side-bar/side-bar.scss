@@ -1,0 +1,12 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    margin: 12px 30px 0 0;
+    min-width: 200px;
+    
+    &__item{
+        padding: 5px 0;
+        font-size: 12px;
+    }
+}

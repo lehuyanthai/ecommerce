@@ -1,0 +1,43 @@
+.BestSellerComponent {
+  position: relative;
+  .title {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 35px;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 60px;
+    &__item {
+      cursor: pointer;
+      margin: 15px;
+      img {
+        max-width: 250px;
+        height: 250px;
+        object-fit: contain;
+        transition: all 0.3s;
+        &:hover {
+          transition: all 0.3s;
+        }
+      }
+
+      .detail {
+        display: flex;
+        justify-content: space-between;
+        .product {
+          text-transform: uppercase;
+          font-size: 12px;
+          color: black;
+        }
+
+        .price {
+          color: grey;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+.detailproduct {
+  padding: 20px 100px;
+  display: flex;
+  .image {
+    width: 60%;
+    .current__img {
+      width: 100%;
+      height: 600px;
+      object-fit: contain;
+    }
+    .list-smallImg {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      overflow: hidden;
+      .smallImg-wrap {
+        margin-right: 20px;
+        cursor: pointer;
+        .smallImg {
+          height: 60px;
+          width: 60px;
+          object-fit: cover;
+        }
+      }
+      .selected {
+        border: solid 2px black;
+      }
+    }
+  }
+
+  .info {
+    flex: 1;
+    .name__price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: solid 1px grey;
+      .name {
+        font-size: 30px;
+      }
+
+      .price {
+        font-size: 20 px;
+      }
+    }
+
+    .color {
+      border-bottom: solid 1px grey;
+      padding: 15px 0;
+      .list__color {
+        margin: 10px 0;
+        display: flex;
+        &--item {
+          border-radius: 50%;
+          margin-right: 20px;
+          height: 25px;
+          width: 25px;
+          cursor: pointer;
+          border: solid 1px rgb(192, 191, 191);
+        }
+        .selected {
+          border: solid 1px #000;
+          padding: 10px;
+          box-shadow: inset 0 0 0 2px #fff;
+        }
+      }
+    }
+
+    .size {
+      padding: 15px 0;
+      .list__size {
+        margin: 10px 0;
+        display: flex;
+        justify-content: start;
+        &--item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          margin-right: 20px;
+          width: 40px;
+          height: 40px;
+          background-color: rgb(221, 218, 218);
+        }
+        .selected {
+          border: solid 1px black;
+        }
+      }
+    }
+
+    .info__btn {
+      width: 100%;
+      height: 55px;
+      padding: 14px 50px;
+      border-radius: 8px;
+      font-size: 20;
+      font-weight: 600;
+      background-color: #4c4c4b;
+      color: #fff;
+      outline: none;
+      transition: all 0.5s cubic-bezier(0.37, 0.01, 0, 0.98) 0s;
+      cursor: pointer;
+      border-style: none;
+
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}

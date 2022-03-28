@@ -1,0 +1,88 @@
+.about {
+  .section1 {
+    height: calc(100vh - 96px);
+    background-image: url(https://media.everlane.com/image/upload/c_scale,dpr_1.0,f_auto,q_auto,w_auto/v1/i/89f45c02_bb65.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    width: 100%;
+    align-items: center;
+
+    .about-page__big-title{
+        font-size: 70px;
+        line-height: 1.2;
+        color: #fff;
+        padding: 140px 0 40px;
+    }
+
+    .about-page__tagline{
+        font-size: 20px;
+        line-height: 32.36px;
+        color: #fff;
+    }
+  }
+
+  .section2{
+    background-color: rgb(128, 130, 132);
+    height: 700px;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p{
+        font-size: 38px;
+        line-height: 61.484px;
+        color: #fff;
+        max-width: 875px;
+        margin: 0 40px;
+    }
+  }
+
+  .section3{
+      display: flex;
+      align-items: center;
+      padding: 50px;
+
+      .section3__image{
+          width: 50%;
+          height: auto;
+          object-fit: contain;
+      }
+
+      .section3__benefit-explanation{
+            margin-left: 5%;
+
+          .section-title{
+            font-size: 15px;
+            line-height: 21.034px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #808284;
+            margin: 0;
+          }
+          .title{
+            font-size: 42px;
+            line-height: 67.956px;
+            color: #4c4c4b;
+            margin-bottom: 20px;
+          }
+          p{
+            font-size: 15px;
+            line-height: 22.652px;
+          }
+      }
+  }
+
+  .section4{
+      flex-direction: row-reverse;
+  }
+
+  .section5{
+    background-image: url(https://media.everlane.com/image/upload/c_scale,dpr_1.0,f_auto,q_auto,w_auto/v1/i/4f12c031_afae.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 600px;
+    max-width: 1440px;
+    margin: 2% auto 5%;
+  }
+}

@@ -1,0 +1,38 @@
+.productcard {
+  margin: 0 30px 30px 0;
+  position: relative;
+  &__img {
+    img {
+      width: 330px;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .btn {
+      position: absolute;
+      outline: none;
+      border: none;
+      width: calc(100% - 20px);
+      height: 40px;
+      z-index: 3;
+      bottom: 3%;
+      background: #fff;
+      left: 50%;
+      cursor: pointer;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    &:hover .btn {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  &__des {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 10;
+  }
+}
+

@@ -1,0 +1,66 @@
+.carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.5s;
+}
+
+.carousel-item {
+  padding: 60px;
+  display: inline-flex;
+  word-wrap: break-word;
+  // align-items: center;
+  justify-content: space-between;
+  height: 800px;
+  background-color: rgb(241, 232, 223);
+  color: black;
+  // position: relative;
+
+  .content {
+    width: 50%;
+
+    .review-comment {
+      margin-top: 30px;
+      font-weight: 200;
+      font-size: 50px;
+      white-space: normal;
+    }
+
+    .review-author {
+      color: rgba(83, 81, 81, 0.5);
+    }
+  }
+  .img {
+    .review-shop {
+      text-decoration: underline;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    img {
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+}
+
+.indicators {
+  z-index: 2;
+  bottom: 30%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
+
+  button {
+    cursor: pointer;
+    margin-right: 40px;
+    font-size: 40px;
+    outline: none;
+    border: none;
+    background-color: transparent
+  }
+}
