@@ -70,7 +70,6 @@ const DetailProduct = () => {
   }, [data]);
 
   return (
-    <div>
       <div className="detailproduct">
         <div className="image">
           <img className="current__img" src={currentImg} alt="" />
@@ -136,10 +135,6 @@ const DetailProduct = () => {
           </button>
         </div>
       </div>
-      <div className="recommend">
-        
-      </div>
-    </div>
   );
 };
 
