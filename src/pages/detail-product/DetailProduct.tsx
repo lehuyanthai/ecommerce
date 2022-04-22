@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { addProduct, openCart } from "../../slice/cartSlice";
 import "./detail-product.scss";
 
-interface IDetailProduct {
+export interface IDetailProduct {
   id: string;
   name: string;
   category: string;
@@ -131,7 +131,7 @@ const DetailProduct = () => {
             </div>
           </div>
           <button className="info__btn" onClick={addToCartHandle}>
-            Add To Bag
+            Add To Cart
           </button>
         </div>
       </div>

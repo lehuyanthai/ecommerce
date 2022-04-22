@@ -1,0 +1,66 @@
+.users {
+  margin: 0px 20px 20px 270px;
+  border-radius: 20px;
+  background-color: white;
+  padding: 20px;
+  height: 100%;
+  .top__side{
+    display: flex;
+    justify-content: space-between;
+    .title{
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .search-user{
+      outline: none;
+    height: 30px;
+    padding: 10px;
+    border: solid 1px rgb(134, 131, 131);
+    border-radius: 10px;
+    }
+  }
+
+  .table {
+    width: 100%;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    thead th {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+      padding: 12px 15px;
+    }
+    tbody {
+      tr td {
+        padding: 10px 15px;
+
+        button {
+          outline: none;
+          border: solid black 1px;
+          border-radius: 5px;
+          margin-right: 4px;
+          padding: 2px;
+          cursor: pointer;
+        }
+        .delete {
+          background-color: rgb(231, 30, 61);
+          &:hover {
+            background-color: rgb(172, 23, 45);
+          }
+        }
+
+        .edit {
+          background-color: rgb(8, 238, 8);
+          &:hover {
+            background-color: rgb(27, 150, 27);
+          }
+        }
+      }
+    }
+  }
+}

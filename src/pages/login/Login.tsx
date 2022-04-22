@@ -107,12 +107,12 @@ const Login = () => {
             }}
           >
             <Form style={{ width: "100%" }}>
-              <Field name="email" placeholder="Email Address" />
+              <Field name="email" placeholder="Email Address" autocomplete="off"/>
               <ErrorMessage
                 render={(msg) => <div className="message">{msg}</div>}
                 name="email"
               />
-              <Field name="password" type="password" placeholder="Password" />
+              <Field name="password" type="password" placeholder="Password" autocomplete="off" />
               <ErrorMessage
                 render={(msg) => <div className="message">{msg}</div>}
                 name="password"
@@ -120,7 +120,7 @@ const Login = () => {
               {/* <ErrorMessage name="password" /> */}
               <div className="message">{loginMessage}</div>
               <button type="submit" className="login__btn" disabled={isLoading}>
-                Sign up
+                Log in
               </button>
             </Form>
           </Formik>

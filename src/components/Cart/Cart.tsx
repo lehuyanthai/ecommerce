@@ -17,6 +17,8 @@ import {
   reset,
 } from "../../slice/cartSlice";
 import "./cart.scss";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase";
 
 interface ICart {
   // isShowing: boolean;
@@ -33,9 +35,20 @@ const Cart = ({ products, quantity, total }: ICart) => {
 
   let emptyCart: boolean = products.length === 0 ? true : false;
 
+  const handleOrder =  () => {
+    addDoc(collection(db,"orders"),{
+      userEmail:userEmail,
+      total:total,
+      quantity:quantity,
+      status:false,
+      products:products
+    })
+  }
+
   const handletoken = (token: any) => {
     console.log(token);
     if (token) {
+      handleOrder()
       dispatch(checkout(true));
       dispatch(reset());
     }
@@ -145,7 +158,7 @@ const Cart = ({ products, quantity, total }: ICart) => {
             token={handletoken}
             billingAddress
             shippingAddress
-            name="All Products"
+            name="N A B O A T"
             amount={total/230}
           >
             <button className={clsx("checkout__btn",!userEmail && "disable")} disabled={!userEmail}>{!userEmail&&<AiFillLock/>} Checkout</button>

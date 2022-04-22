@@ -1,0 +1,85 @@
+.admin {
+  position: relative;
+  background-color: #e7e5e5;
+  padding: 20px 0;
+  min-height: 100vh;
+  .sideBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #fff;
+
+    &__logo {
+      display: grid;
+      place-content: center;
+      height: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: "Mochiy Pop P one", sans-serif;
+      color: #6227d8;
+    }
+
+    &__menu {
+      position: relative;
+      // margin-top: 10px;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        place-content: flex-start;
+        padding: 17px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #555555;
+        transition: color 0.3s ease-in-out;
+
+        &.active {
+          color: #fff;
+        }
+
+        &__icon {
+          margin: 0 1rem;
+        }
+      }
+
+      &__indicator {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: calc(100% - 40px);
+        border-radius: 10px;
+        background: #8e2de2; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to bottom,
+          #6227d8,
+          #b69acf
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to bottom,
+          #6227d8,
+          #c0a8e0
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        z-index: -1;
+        transform: translateX(-50%);
+        transition: 0.3s ease-in-out;
+      }
+    }
+    &__logout{
+      position: fixed;
+      bottom: 0;
+      color: white;
+      font-size: 16px;
+        font-weight: 500;
+      width: 210px;
+      cursor: pointer;
+      padding: 12px 30px;
+      text-align: center;
+      margin: 20px;
+      border-radius: 10px;
+      background-color: #6227d8;
+    }
+  }
+}

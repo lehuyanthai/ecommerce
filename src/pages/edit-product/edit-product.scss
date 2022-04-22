@@ -1,0 +1,127 @@
+.editproduct {
+  margin: 0px 20px 20px 270px;
+  border-radius: 20px;
+  background-color: white;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .left__side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+
+    .title {
+      font-size: 25px;
+    }
+
+    input {
+      margin-top: 30px;
+      padding-left: 20px;
+      width: 100%;
+      height: 50px;
+      outline: none;
+      border: none;
+      border-radius: 0;
+      background-color: #f0f0f0;
+    }
+
+    select {
+      margin-top: 30px;
+      padding-left: 20px;
+      height: 50px;
+      outline: none;
+      border: none;
+      border-radius: 0;
+      background-color: #f0f0f0;
+      width: 20%;
+    }
+
+    .upload__btn {
+      margin-top: 20px;
+      border-radius: 10px;
+      padding: 10px 10px;
+      width: 200px;
+      outline: none;
+      border: none;
+      place-content: center;
+      background-color: #6227d8;
+      color: white;
+      font-size: 16px;
+      box-shadow: 1px 1px 1px 1px #cac6c6;
+      cursor: pointer;
+    }
+  }
+
+  .right__side {
+    margin-top: 70px;
+    width: 40%;
+
+    .file-upload {
+      height: 100px;
+      width: 100px;
+      border-radius: 20px;
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border: 4px solid #ffffff;
+      overflow: hidden;
+      background-image: linear-gradient(to bottom, #6227d8 50%, #ffffff 50%);
+      background-size: 100% 200%;
+      transition: all 1s;
+      color: #ffffff;
+      font-size: 50px;
+
+      input[type="file"] {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      &:hover {
+        background-position: 0 -100%;
+
+        color: #6227d8;
+      }
+    }
+    .list__img {
+      display: flex;
+      .img {
+        width: 100px;
+        position: relative;
+        margin-right: 5px;
+        .delete__btn {
+          transition: all 0.5s;
+          position: absolute;
+          top: 5%;
+          right: 5%;
+          opacity: 0;
+          outline: none;
+          border: none;
+          background: transparent;
+        }
+        &:hover {
+          background-position: 0 -100%;
+          .delete__btn {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

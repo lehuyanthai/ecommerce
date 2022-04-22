@@ -1,0 +1,51 @@
+.dashboard {
+  // width: 100%;
+  height: calc(100vh - 40px);
+  margin: 0px 20px 0px 270px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  .group__card {
+    display: flex;
+
+    .card {
+      width: 100%;
+      height: 170px;
+      background: #000;
+      border-radius: 10px;
+      margin-right: 15px;
+      .top__side{
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+        color: white;
+        font-size: 20;
+        font-weight: 400;
+      }
+    }
+    .product {
+        background: linear-gradient(45deg,#7441db,#c89cff);
+    }
+    .order {
+        background: linear-gradient(45deg,#b02940,#fcc173);;
+    }
+    .revenue {
+      background: linear-gradient(45deg,#226cc5,#6cd975);
+    }
+    .date {
+      background: linear-gradient(45deg,#7441db,#f9877c);
+    }
+  }
+  .graph{
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      margin-top: 20px;
+      img{
+          object-fit:cover ;
+          width: 100%;
+      }
+  }
+}

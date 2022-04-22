@@ -9,11 +9,12 @@ import {
   Formik,
 } from "formik";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoadingState } from "../../slice/userSlice";
 import Spinner from "../../components/Spinner/Spinner";
+import { addDoc, collection } from "firebase/firestore";
 
 // const MyTextInput = ({ label, ...props }:{label:string,props:s}) => {
 //   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -76,7 +77,10 @@ const SignUp = () => {
             })}
             onSubmit={async (values) =>{
               dispatch(setLoadingState('loading'))
-               await createUserWithEmailAndPassword(auth,values.email,values.password).then(()=>{
+               await createUserWithEmailAndPassword(auth,values.email,values.password).then((user)=>{
+                addDoc(collection(db,"users"),{
+                  userEmail:user.user.email
+                })
                  navigate("/")
                  dispatch(setLoadingState('pending'))
                }).catch((error) => {

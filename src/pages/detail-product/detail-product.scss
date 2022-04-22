@@ -72,7 +72,7 @@
       .list__size {
         margin: 10px 0;
         display: flex;
-        justify-content: flex-start;
+        flex-wrap: wrap;
         &--item {
           display: flex;
           justify-content: center;
