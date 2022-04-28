@@ -2,10 +2,14 @@ import { collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
 import { ChangeEvent, useEffect, useState } from "react";
 import { IProductCard } from "../../components/product-card/ProductCard";
 import { db } from "../../firebase";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
 import { ImBin } from "react-icons/im";
 import { AiOutlineEdit } from "react-icons/ai";
 import "./products.scss";
 import { useNavigate } from "react-router-dom";
+import { DialogTitle } from "@mui/material";
 
 const Products = () => {
   const [data, setData] = useState<Array<IProductCard>>([]);
@@ -13,6 +17,27 @@ const Products = () => {
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [searchData,setSearchData] = useState<Array<IProductCard>>([])
   const navigate = useNavigate();
+  const [open, setOpen] = useState<boolean>(false);
+  const [waitDeleteID, setWaitDeleteID] = useState<{id:string,gender:string}|null>()
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  const handleDeleteClick = (id:string,gender:string) =>{
+    setWaitDeleteID({id,gender})
+    handleClickOpen()
+  }
+
+  const deleteProductHandle = async () => {
+    await deleteDoc(doc(db, `collection_${waitDeleteID?.gender}`, `${waitDeleteID?.id}`));
+    setCountChange(Math.random());
+    handleClose()
+  };
 
   useEffect(() => {
     const getProductData = async (): Promise<Array<IProductCard>> => {
@@ -55,13 +80,24 @@ const Products = () => {
     setSearchData(searchedData);
   },[data,searchQuery])
 
-  const deleteProductHandle = async (id: string, gender: string) => {
-    await deleteDoc(doc(db, `collection_${gender}`, `${id}`));
-    setCountChange(Math.random());
-  };
-
   return (
     <div className="products__ad">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle>
+        Are you sure you want to delete this product ?
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={deleteProductHandle} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
       <div className="side__top">
         <div className="title">Product Management</div>
         <input className="search-product" placeholder="Search . . . " value={searchQuery} onChange={(e:ChangeEvent<HTMLInputElement>)=>setSearchQuery(e.target.value)} />
@@ -129,7 +165,7 @@ const Products = () => {
                   <button
                     className="delete"
                     onClick={() =>
-                      deleteProductHandle(item.id, item?.gender as string)
+                      handleDeleteClick(item.id, item?.gender as string)
                     }
                   >
                     <ImBin size={22} color="white" />

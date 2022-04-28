@@ -1,8 +1,12 @@
 import { collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
 import React, { ChangeEvent, useEffect, useState } from "react";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
 import { ImBin } from "react-icons/im";
 import { db } from "../../firebase";
 import "./users.scss";
+import { DialogTitle } from "@mui/material";
 
 export interface IUser {
   id: string;
@@ -15,11 +19,27 @@ const Users = () => {
   const [searchQuery, setsearchQuery] = useState<string>("");
   const [searchData, setSearchData] = useState<Array<IUser>>([]);
   const [countRefresh, setCountRefresh] = useState<number>(1);
+  const [open, setOpen] = React.useState(false);
+  const [waitDeleteID, setWaitDeleteID] = useState<string|null>()
 
-  const deleteUserHandle = async (id: string) => {
-    await deleteDoc(doc(db, "users", `${id}`));
-    setCountRefresh(Math.random());
+  const handleClickOpen = () => {
+    setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const deleteUserHandle = async () => {
+    await deleteDoc(doc(db, "users", `${waitDeleteID}`));
+    setCountRefresh(Math.random());
+    handleClose()
+  };
+  
+  const handleDeleteClick = (id:string) =>{
+    setWaitDeleteID(id)
+    handleClickOpen()
+  }
 
   useEffect(() => {
     const getProductData = async (): Promise<Array<IUser>> => {
@@ -56,6 +76,22 @@ const Users = () => {
 
   return (
     <div className="users">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle>
+        Are you sure you want to delete this product ?
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={deleteUserHandle} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
       <div className="top__side">
         <div className="title">User Management</div>
         <input
@@ -87,7 +123,7 @@ const Users = () => {
                 <td>
                   <button
                     className="delete"
-                    onClick={() => deleteUserHandle(item.id)}
+                    onClick={()=>handleDeleteClick(item.id)}
                   >
                     <ImBin size={22} color="white" />
                   </button>

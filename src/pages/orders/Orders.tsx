@@ -1,11 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import "./orders.scss";
-
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
 import { collection, getDocs, query, updateDoc, doc } from "firebase/firestore";
 import { AiFillPlusSquare, AiFillMinusSquare } from "react-icons/ai";
 import { BsCheckLg } from "react-icons/bs";
 import { db } from "../../firebase";
 import clsx from "clsx";
+import { DialogTitle } from "@mui/material";
 
 interface IOrderProduct {
   id: string;
@@ -29,7 +32,23 @@ export interface IOrder {
 const Orders = () => {
   const [data, setData] = useState<Array<IOrder>>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [open, setOpen] = React.useState(false);
   const [searchData, setSearchData] = useState<Array<IOrder>>([]);
+  const [waitConfirmID, setWaitConfirmID] = useState<string|null>()
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  
+  const handleConfirmClick = (id:string) =>{
+    setWaitConfirmID(id)
+    handleClickOpen()
+  }
   useEffect(() => {
     const getOrdersData = async (): Promise<Array<IOrder>> => {
       const data: Array<any> = [];
@@ -60,8 +79,9 @@ const Orders = () => {
     setDetailToggled(tamp);
   };
 
-  const handleOrder = async (id: string) => {
-    await updateDoc(doc(db, "orders", `${id}`), { status: true });
+  const handleOrder = async () => {
+    await updateDoc(doc(db, "orders", `${waitConfirmID}`), { status: true });
+    handleClose()
   };
 
   useEffect(() => {
@@ -77,6 +97,22 @@ const Orders = () => {
 
   return (
     <div className="orders">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle>
+        Are you sure this order is fulfilled ?
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleOrder} autoFocus>
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
       <div className="top__side">
         <div className="title">Order Management</div>
         <input
@@ -127,7 +163,7 @@ const Orders = () => {
                   {item.status ? "Fulfilled" : "Unfulfilled"}
                 </td>
                 <td>
-                  <button onClick={() => handleOrder(item.id)}>
+                  <button onClick={() => handleConfirmClick(item.id)}>
                     <BsCheckLg />
                   </button>
                 </td>
