@@ -140,6 +140,9 @@ const Header = () => {
         <div className="header__link--item about">
           <Link to="/about">About</Link>
         </div>
+        {!!userEmail && <div className="header__link--item about">
+          <Link to="/history">History</Link>
+        </div>}
       </div>
       <h3 className="header__title">
         <Link to="/">N A B O A T</Link>

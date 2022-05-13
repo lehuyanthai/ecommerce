@@ -1,10 +1,17 @@
-import { collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { ChangeEvent, useEffect, useState } from "react";
 import { IProductCard } from "../../components/product-card/ProductCard";
 import { db } from "../../firebase";
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
 import { ImBin } from "react-icons/im";
 import { AiOutlineEdit } from "react-icons/ai";
 import "./products.scss";
@@ -14,11 +21,14 @@ import { DialogTitle } from "@mui/material";
 const Products = () => {
   const [data, setData] = useState<Array<IProductCard>>([]);
   const [countChange, setCountChange] = useState<number>(1);
-  const [searchQuery, setSearchQuery] = useState<string>("")
-  const [searchData,setSearchData] = useState<Array<IProductCard>>([])
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchData, setSearchData] = useState<Array<IProductCard>>([]);
   const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
-  const [waitDeleteID, setWaitDeleteID] = useState<{id:string,gender:string}|null>()
+  const [waitDeleteID, setWaitDeleteID] = useState<{
+    id: string;
+    gender: string;
+  } | null>();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,16 +37,18 @@ const Products = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  
-  const handleDeleteClick = (id:string,gender:string) =>{
-    setWaitDeleteID({id,gender})
-    handleClickOpen()
-  }
+
+  const handleDeleteClick = (id: string, gender: string) => {
+    setWaitDeleteID({ id, gender });
+    handleClickOpen();
+  };
 
   const deleteProductHandle = async () => {
-    await deleteDoc(doc(db, `collection_${waitDeleteID?.gender}`, `${waitDeleteID?.id}`));
+    await deleteDoc(
+      doc(db, `collection_${waitDeleteID?.gender}`, `${waitDeleteID?.id}`)
+    );
     setCountChange(Math.random());
-    handleClose()
+    handleClose();
   };
 
   useEffect(() => {
@@ -44,9 +56,9 @@ const Products = () => {
       const womenData: Array<any> = [];
       const menData: Array<any> = [];
       const collectionWomen = collection(db, `collection_women`);
-      let womenQuery = query(collectionWomen);
+      let womenQuery = query(collectionWomen, orderBy("name"));
       const collectionMen = collection(db, `collection_men`);
-      let menQuery = query(collectionMen);
+      let menQuery = query(collectionMen, orderBy("name"));
 
       await getDocs(womenQuery).then((result) => {
         result.forEach((doc) => {
@@ -65,20 +77,24 @@ const Products = () => {
           });
         });
       });
-      if (countChange) setData(womenData.concat(menData));
-      return womenData.concat(menData);
+      if (countChange) setData(menData.concat(womenData));
+      return menData.concat(womenData);
     };
     getProductData();
   }, [countChange]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const searchedData: IProductCard[] = data.filter((product) => {
       if (searchQuery === "") return true;
       else
         return product.name.toLowerCase().includes(searchQuery.toLowerCase());
     });
-    setSearchData(searchedData);
-  },[data,searchQuery])
+    setSearchData(
+      searchedData.sort((a, b) => {
+        return a.name > b.name ? 1 : -1;
+      })
+    );
+  }, [data, searchQuery]);
 
   return (
     <div className="products__ad">
@@ -89,7 +105,7 @@ const Products = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle>
-        Are you sure you want to delete this product ?
+          Are you sure you want to delete this product ?
         </DialogTitle>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -100,7 +116,14 @@ const Products = () => {
       </Dialog>
       <div className="side__top">
         <div className="title">Product Management</div>
-        <input className="search-product" placeholder="Search . . . " value={searchQuery} onChange={(e:ChangeEvent<HTMLInputElement>)=>setSearchQuery(e.target.value)} />
+        <input
+          className="search-product"
+          placeholder="Search . . . "
+          value={searchQuery}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setSearchQuery(e.target.value)
+          }
+        />
         <button
           className="add-product"
           onClick={() => {

@@ -18,11 +18,12 @@ import Orders from "../pages/orders/Orders";
 import AddProduct from "../pages/add-product/AddProduct";
 import EditProduct from "../pages/edit-product/EditProduct";
 import Users from "../pages/users/Users";
+import PurchaseHistory from "../pages/purchase-history/PurchaseHistory";
 
 const MainRoutes = () => {
   const user = useAppSelector((state) => state.user.userEmail);
-  const admin = user === "admin@gmail.com";
-  if (admin)
+  const isAdmin = user === "admin@gmail.com";
+  if (isAdmin)
     return (
       <Routes>
         <Route path="/" element={<Admin />}>
@@ -45,6 +46,7 @@ const MainRoutes = () => {
         <Route path="search" element={<Search />} />
         <Route path="about" element={<About />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="history" element={user?<PurchaseHistory />:<Navigate to="/" replace />} />
         <Route
           path="login"
           element={user ? <Navigate to="/" replace /> : <Login />}

@@ -5,7 +5,7 @@ import { db, storage } from "../../firebase";
 import * as Yup from "yup";
 import "./add-product.scss";
 import { addDoc, collection } from "firebase/firestore";
-import { AiOutlineFileImage } from "react-icons/ai";
+import { AiOutlineCheck, AiOutlineFileImage } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
@@ -63,7 +63,7 @@ const AddProduct = () => {
 
     Promise.all(promises).catch((err) => console.log(err));
   };
-
+  console.log(urls)
   return (
     <div className="addproduct">
       <div className="left__side">
@@ -154,7 +154,7 @@ const AddProduct = () => {
         </div>
         <br />
         {images.map((url: any) => (
-          <div>{url.name}</div>
+          <div>{url.name}<AiOutlineCheck onClick={handleUpload} color="white" style={{cursor:"pointer"}}/></div>
         ))}
       </div>
     </div>

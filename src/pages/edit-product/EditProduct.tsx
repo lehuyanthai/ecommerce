@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { IoMdCloseCircle } from "react-icons/io";
+import { AiOutlineCheck } from "react-icons/ai";
 
 const EditProduct = () => {
   const [data, setData] = useState<IDetailProduct>();
@@ -20,7 +21,7 @@ const EditProduct = () => {
   const [newImages, setNewImages] = useState<any>([]);
   const [urls, setUrls] = useState<string[]>([]);
   let { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent) => {
     setNewImages([]);
@@ -100,16 +101,18 @@ const EditProduct = () => {
   const handleUpdate = () => {
     // handleImageUpload();
     console.log({ images: images as string[], urls: urls });
-      updateDoc(doc(db, `collection_${gender}`, `${id}`), {
-        name: name,
-        category: category,
-        gender: gender,
-        price: price,
-        image: urls.concat(images as string[]),
-        size: (size as string).split(","),
-        color: (color as string).split(","),
-      });
-    setTimeout(()=>{navigate("/products")},1000)
+    updateDoc(doc(db, `collection_${gender}`, `${id}`), {
+      name: name,
+      category: category,
+      gender: gender,
+      price: price,
+      image: urls.concat(images as string[]),
+      size: (size as string).split(","),
+      color: (color as string).split(","),
+    });
+    setTimeout(() => {
+      navigate("/products");
+    }, 1000);
   };
 
   return (
@@ -189,6 +192,11 @@ const EditProduct = () => {
             >
               <IoMdCloseCircle size={25} style={{ cursor: "pointer" }} />
             </button>
+            <AiOutlineCheck
+              onClick={handleImageUpload}
+              color="white"
+              style={{ cursor: "pointer" }}
+            />
           </div>
         ))}
         <br />
