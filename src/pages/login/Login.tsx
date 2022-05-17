@@ -1,15 +1,15 @@
-import "./log-in.scss";
-
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { auth, provider } from "../../firebase";
-import { setActiveUser, setLoadingState } from "../../slice/userSlice";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useAppSelector } from "../../hooks/useAppSelector";
 import Spinner from "../../components/Spinner/Spinner";
+import { auth, provider } from "../../firebase";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { setActiveUser, setLoadingState } from "../../slice/userSlice";
+import "./log-in.scss";
+
 
 const Login = () => {
   const navigate = useNavigate();

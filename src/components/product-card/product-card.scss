@@ -1,6 +1,8 @@
 .productcard {
   margin: 0 30px 30px 0;
   position: relative;
+  cursor: pointer;
+  
   &__img {
     img {
       width: 330px;

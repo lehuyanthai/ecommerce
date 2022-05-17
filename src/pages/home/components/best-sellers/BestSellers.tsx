@@ -28,29 +28,7 @@ const BestSellers = () => {
     };
     getPopularCategory();
   }, []);
-  // console.log(data)
-
-  //test query firestore
-  // useEffect(() => {
-  //   const getPopularCategory = async (): Promise<Array<IPopularCategory>> => {
-  //     const data: Array<any> = [];
-  //     const ppRef = collection(db,"popular_catelogy")
-  //     const q = query(ppRef,where('name','in',['Denim','Best Sellers']))
-  //     await getDocs(q).then((result) =>{
-  //       result.forEach(
-  //         (doc) => {
-  //           data.push({
-  //             id: doc.id,
-  //             ...doc.data(),
-  //           });
-  //     })}).catch(error=>console.log(error))
-  //     console.log(data)
-  //     return data;
-  //   };
-  //   getPopularCategory();
-  // }, []);
-
-
+  
   return (
     <div className="BestSellerComponent">
       <div className="title">This Month’s Best Sellers</div>

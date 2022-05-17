@@ -1,20 +1,20 @@
-import "./signup.scss";
-import React, { useState } from "react";
-import * as Yup from "yup";
-import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
 import {
   ErrorMessage,
   Field,
   Form,
-  Formik,
+  Formik
 } from "formik";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../firebase";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { setLoadingState } from "../../slice/userSlice";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 import Spinner from "../../components/Spinner/Spinner";
-import { addDoc, collection } from "firebase/firestore";
+import { auth, db } from "../../firebase";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { setLoadingState } from "../../slice/userSlice";
+import "./signup.scss";
 
 // const MyTextInput = ({ label, ...props }:{label:string,props:s}) => {
 //   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]

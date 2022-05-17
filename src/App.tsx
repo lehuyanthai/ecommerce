@@ -18,7 +18,7 @@ function App() {
   }, [isSuccess, navigate, dispatch]);
 
   return (
-    <div className="App" style={{ position: "relative",height:"100vh" }}>
+    <div className="app">
       <MainRoutes />
     </div>
   );

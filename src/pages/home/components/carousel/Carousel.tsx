@@ -1,7 +1,7 @@
-import "./carousel.scss";
-
 import React, { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
+import "./carousel.scss";
+
 
 export interface ICacouselItem {
   author: string;
@@ -46,8 +46,6 @@ const Carousel = ({ children, amount }: ICacousel) => {
     onSwipedLeft: () => updateIndex(activeIndex + 1),
     onSwipedRight: () => updateIndex(activeIndex - 1),
   });
-
-  //React.Children.count(children)
 
   const updateIndex = (newIndex: number) => {
     if (newIndex < 0) {

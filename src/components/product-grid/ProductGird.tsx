@@ -75,7 +75,7 @@ const ProductGird = ({ gender, category, filters }: IProductGrid) => {
   }
   return (
     <div className="productgrid">
-      {filtersData.map((item) => (
+      {filtersData.map((item:IProductCard) => (
         <ProductCard
           id={item.id}
           category={item.category}

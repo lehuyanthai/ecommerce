@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { FiShoppingBag, FiCompass } from "react-icons/fi";
-import { MdPeopleOutline, MdOutlineGridView } from "react-icons/md";
-import "./admin.scss";
-import { useDispatch } from "react-redux";
-import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
+import React, { useEffect, useRef, useState } from "react";
+import { FiCompass, FiShoppingBag } from "react-icons/fi";
+import { MdOutlineGridView, MdPeopleOutline } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
 import { setUserLogOutState } from "../../slice/userSlice";
+import "./admin.scss";
 
 const sidebarNavItems = [
   {

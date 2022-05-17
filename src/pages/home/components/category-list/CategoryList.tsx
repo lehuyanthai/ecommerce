@@ -1,7 +1,7 @@
-import "./category-list.scss";
-
 import React from "react";
 import { Link } from "react-router-dom";
+import "./category-list.scss";
+
 
 const POPULAR_CATEGORY = [
   {

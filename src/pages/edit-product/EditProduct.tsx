@@ -1,13 +1,13 @@
-import "./edit-product.scss";
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { IDetailProduct } from "../detail-product/DetailProduct";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { db, storage } from "../../firebase";
-import { useNavigate, useParams } from "react-router-dom";
-import { BiImageAdd } from "react-icons/bi";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { IoMdCloseCircle } from "react-icons/io";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
+import { BiImageAdd } from "react-icons/bi";
+import { IoMdCloseCircle } from "react-icons/io";
+import { useNavigate, useParams } from "react-router-dom";
+import { db, storage } from "../../firebase";
+import { IDetailProduct } from "../detail-product/DetailProduct";
+import "./edit-product.scss";
 
 const EditProduct = () => {
   const [data, setData] = useState<IDetailProduct>();

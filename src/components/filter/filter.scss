@@ -28,13 +28,14 @@
       outline: none;
       padding: 7px 0;
       margin-bottom: 20px;
+      cursor: pointer;
 
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
     }
 
-    .chip{
+    .chip {
       padding: 7px 15px 7px 20px;
       margin-bottom: 20px;
       font-size: 14px;

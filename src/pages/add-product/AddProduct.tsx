@@ -1,12 +1,12 @@
+import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { ChangeEvent, useState } from "react";
-import { db, storage } from "../../firebase";
-import * as Yup from "yup";
-import "./add-product.scss";
-import { addDoc, collection } from "firebase/firestore";
 import { AiOutlineCheck, AiOutlineFileImage } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { db, storage } from "../../firebase";
+import "./add-product.scss";
 
 const AddProduct = () => {
   const [images, setImages] = useState<any>([]);

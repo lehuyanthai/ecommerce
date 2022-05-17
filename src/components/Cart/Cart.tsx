@@ -1,10 +1,12 @@
 import clsx from "clsx";
+import { addDoc, collection } from "firebase/firestore";
 import React from "react";
 import * as AiIcons from "react-icons/ai";
+import { AiFillLock } from 'react-icons/ai';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
-import {AiFillLock} from 'react-icons/ai'
+import { db } from "../../firebase";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import {
@@ -14,15 +16,11 @@ import {
   ICartProduct,
   increaseAmount,
   removeProduct,
-  reset,
+  reset
 } from "../../slice/cartSlice";
 import "./cart.scss";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase";
 
 interface ICart {
-  // isShowing: boolean;
-  // onClose: () => void;
   products: ICartProduct[];
   quantity: number;
   total: number;

@@ -1,12 +1,12 @@
-import { collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { DialogTitle } from "@mui/material";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
+import { collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { ImBin } from "react-icons/im";
 import { db } from "../../firebase";
 import "./users.scss";
-import { DialogTitle } from "@mui/material";
 
 export interface IUser {
   id: string;

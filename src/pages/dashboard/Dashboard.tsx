@@ -1,20 +1,22 @@
 import { collection, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { AiOutlineFileText } from "react-icons/ai";
+import { BiTimeFive } from "react-icons/bi";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import { IProductCard } from "../../components/product-card/ProductCard";
 import { db } from "../../firebase";
 import { IOrder } from "../orders/Orders";
-import graph from "./graph.png";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-import { AiOutlineFileText } from "react-icons/ai";
-import { BiTimeFive } from "react-icons/bi";
-import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import "./dashboard.scss";
-import { useNavigate } from "react-router-dom";
+import graph from "./graph.png";
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+
   const [products, setProducts] = useState<Array<IProductCard>>([]);
   const [orders, setOrders] = useState<Array<IOrder>>([]);
-  const navigate = useNavigate()
+
   useEffect(() => {
     const getProductData = async (): Promise<Array<IProductCard>> => {
       const womenData: Array<any> = [];
@@ -44,6 +46,7 @@ const Dashboard = () => {
       setProducts(womenData.concat(menData));
       return womenData.concat(menData);
     };
+    
     const getOrdersData = async (): Promise<Array<IOrder>> => {
       const data: Array<any> = [];
       const collectionRef = collection(db, "orders");
@@ -69,8 +72,6 @@ const Dashboard = () => {
     var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
 
-    //Alert.alert(date + '-' + month + '-' + year);
-    // You can turn it in to your desired format
     return date + " - " + month + " - " + year; //format: dd-mm-yyyy;
   };
 

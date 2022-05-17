@@ -1,14 +1,14 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import "./orders.scss";
+import { DialogTitle } from "@mui/material";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import { collection, getDocs, query, updateDoc, doc } from "firebase/firestore";
-import { AiFillPlusSquare, AiFillMinusSquare } from "react-icons/ai";
+import clsx from "clsx";
+import { collection, doc, getDocs, query, updateDoc } from "firebase/firestore";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
 import { BsCheckLg } from "react-icons/bs";
 import { db } from "../../firebase";
-import clsx from "clsx";
-import { DialogTitle } from "@mui/material";
+import "./orders.scss";
 
 interface IOrderProduct {
   id: string;

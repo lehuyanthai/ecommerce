@@ -5,8 +5,8 @@ import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
 import { db } from "../../firebase";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { IOrder } from "../orders/Orders";
+import './purchase-history.scss';
 
-import './purchase-history.scss'
 
 const PurchaseHistory = () => {
     const user = useAppSelector(state=>state.user.userEmail)

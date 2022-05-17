@@ -1,22 +1,22 @@
+import { DialogTitle } from "@mui/material";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
 import {
   collection,
   deleteDoc,
   doc,
   getDocs,
   orderBy,
-  query,
+  query
 } from "firebase/firestore";
 import { ChangeEvent, useEffect, useState } from "react";
+import { AiOutlineEdit } from "react-icons/ai";
+import { ImBin } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 import { IProductCard } from "../../components/product-card/ProductCard";
 import { db } from "../../firebase";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import { ImBin } from "react-icons/im";
-import { AiOutlineEdit } from "react-icons/ai";
 import "./products.scss";
-import { useNavigate } from "react-router-dom";
-import { DialogTitle } from "@mui/material";
 
 const Products = () => {
   const [data, setData] = useState<Array<IProductCard>>([]);

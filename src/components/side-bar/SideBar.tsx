@@ -1,7 +1,7 @@
-import './side-bar.scss'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './side-bar.scss';
 
-import React from 'react'
-import {Link} from 'react-router-dom'
 
 export interface ISideBar {
   name: string;

@@ -1,10 +1,10 @@
-import "./collection.scss";
-
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import SideBar, { ISideBar } from "../../components/side-bar/SideBar";
-import ProductGird from "../../components/product-grid/ProductGird";
 import Filter, { IFilters } from "../../components/filter/Filter";
+import ProductGird from "../../components/product-grid/ProductGird";
+import SideBar, { ISideBar } from "../../components/side-bar/SideBar";
+import "./collection.scss";
+
 
 const womenSideBarData: ISideBar[] = [
   { name: "Women's All", link: "/women/all" },
