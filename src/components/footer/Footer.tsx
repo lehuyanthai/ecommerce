@@ -1,10 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 
 const Footer = () => {
-  const {pathname} = useLocation();
-  console.log(pathname)
   if (
     window.location.pathname === "/signup" ||
     window.location.pathname === "/login" ||

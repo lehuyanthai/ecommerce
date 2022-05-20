@@ -7,8 +7,8 @@ import { IoCloseOutline } from 'react-icons/io5';
 import "./filter.scss";
 
 export interface IFilters {
-  color?: string[];
-  size?: string[];
+  color: string[];
+  size: string[];
 }
 
 interface IFiltersProp {

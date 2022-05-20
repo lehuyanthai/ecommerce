@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
@@ -114,8 +114,6 @@ const Header = () => {
     }
   }, [cartOpen]);
 
-  const { pathname } = useLocation();
-  console.log(pathname);
   if (
     window.location.pathname === "/signup" ||
     window.location.pathname === "/login"

@@ -1,6 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
+import { isNil, isNull } from "lodash";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { addProduct, openCart } from "../../slice/cartSlice";
@@ -17,22 +18,24 @@ export interface IDetailProduct {
 }
 
 const DetailProduct = () => {
-  const [data, setData] = useState<IDetailProduct>();
+  const [data, setData] = useState<IDetailProduct|null>(null);
   const [currentImg, setCurrentImg] = useState<string>("");
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>("");
   const dispatch = useAppDispatch();
   let { id } = useParams();
+  
+  const navigate = useNavigate()
 
   const addToCartHandle = () => {
     dispatch(
       addProduct({
-        id: id as string,
-        name: data?.name as string,
+        id: !isNil(id) ? id : '',
+        name: !isNull(data)? data.name: '',
         size: selectedSize,
         color: selectedColor,
-        price: data?.price as number,
-        image: data?.image[0] as string,
+        price: !isNull(data)? data.price: 0,
+        image: !isNull(data)? data.image[0]: '',
         quantity: 1,
       })
     );
@@ -51,6 +54,7 @@ const DetailProduct = () => {
         setData(data);
         return data;
       } else {
+        navigate("/")
         console.log("No such document!");
       }
       return data;
@@ -64,9 +68,9 @@ const DetailProduct = () => {
       left: 0,
       behavior: "smooth",
     });
-    setCurrentImg(data?.image[0] as string);
-    setSelectedColor(data?.color[0] as string);
-    setSelectedSize(data?.size[0] as string);
+    setCurrentImg(!isNull(data)? data.image[0]: '');
+    setSelectedColor(!isNull(data)? data.color[0]: '');
+    setSelectedSize(!isNull(data)? data.size[0]: '');
   }, [data]);
 
   return (
@@ -76,6 +80,7 @@ const DetailProduct = () => {
           <div className="list-smallImg">
             {data?.image?.map((item, index) => (
               <div
+               key={index}
                 className={
                   item === currentImg
                     ? "smallImg-wrap selected"

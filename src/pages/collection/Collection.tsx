@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Filter, { IFilters } from "../../components/filter/Filter";
-import ProductGird from "../../components/product-grid/ProductGird";
+import ProductGrid from "../../components/product-grid/ProductGrid";
 import SideBar, { ISideBar } from "../../components/side-bar/SideBar";
 import "./collection.scss";
 
@@ -75,7 +75,7 @@ const Collection = () => {
         <div className="products">
           <div className="collection__title">{collection}'s {category}</div>
           <Filter key="asdad" filters={filters} setFilters={setFilters} />
-          <ProductGird
+          <ProductGrid
             gender={collection as string}
             category={category as string}
             filters={filters}

@@ -125,7 +125,7 @@ const SignUp = () => {
         </div>
         <img
           className="signup__img"
-          src="https://media.everlane.com/image/upload/c_scale,dpr_1.0,f_auto,q_auto,w_auto/c_limit,w_1500/v1/i/87c6a9b5_d15c.jpg"
+          src="https://media.everlane.com/image/upload/c_fill,w_384,ar_380:655,q_auto,dpr_1.0,g_face:center,f_auto,fl_progressive:steep/i/DesktopSignupModalImage"
           alt="/b"
         ></img>
       </div>

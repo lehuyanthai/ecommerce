@@ -48,6 +48,7 @@ $cart-footer-height: 160px;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          cursor: pointer;
         }
         .color {
           border-radius: 50%;
@@ -77,6 +78,7 @@ $cart-footer-height: 160px;
         border-radius: 10px;
         width: 90px;
         height: 35px;
+        cursor: pointer;
       }
     }
   }
